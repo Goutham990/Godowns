@@ -1,0 +1,14 @@
+.item-details {
+    width: 60%;
+    padding: 20px;
+}
+
+.item-details img {
+    max-width: 100%;
+    height: auto;
+}
+
+.item-message {
+    font-size: 18px;
+    color: #888;
+}

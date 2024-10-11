@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import TreeView from "./components/TreeView";
+import ItemDetails from "./components/ItemDetails";
+import Login from "./Pages/Login";
 
-function App() {
+const App = () => {
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleSelectItem = (item) => {
+    setSelectedItem(item);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      {!isLoggedIn ? (
+        <Login setIsLoggedIn={setIsLoggedIn} />
+      ) : (
+        <div className="content">
+          <TreeView onSelectItem={handleSelectItem} />
+          <ItemDetails item={selectedItem} />
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default App;
